@@ -22,6 +22,21 @@ namespace Boletera.ViewModel
         private bool _isViewVisible = true;
         private IUserRepository _userRepository;
 
+        //intentar hacer funcionar con emal
+        private string _email; //email
+
+        
+        public string Email
+        {
+            get { return _email; }
+            set 
+            {
+                _email = value;
+                OnProperyChanged(nameof(Email));
+            }
+        }
+        //intentar hacer funcionar con emal
+
         //propiedades
         public string Username
         {
@@ -81,8 +96,8 @@ namespace Boletera.ViewModel
         private bool CanExecuteLoginCommand(object obj)
         {
             bool validData;
-            if (string.IsNullOrWhiteSpace(Username)
-                || Username.Length < 3
+            if (string.IsNullOrWhiteSpace(Username) //antes Username
+                || Username.Length < 3 //antes Username
                 || Password == null
                 || Password.Length < 3)
                 validData = false;
@@ -94,11 +109,11 @@ namespace Boletera.ViewModel
         public void ExecuteLoginCommand(object obj)
         {
             var isValidUser = _userRepository.AuthenticateUser(
-                new System.Net.NetworkCredential(Username, Password));
+                new System.Net.NetworkCredential(Username, Password));//antes Username
             if (isValidUser)
             {
                 Thread.CurrentPrincipal = new GenericPrincipal(
-                    new GenericIdentity(Username), null);
+                    new GenericIdentity(Username), null); //antes Username
                 // Crear nueva ventana
                 var manejadorView = new CarteleraView();
                 // Asignarla como ventana principal

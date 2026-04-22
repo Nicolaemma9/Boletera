@@ -19,13 +19,13 @@ namespace Boletera.Repositories
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "INSERT INTO [User]" +
-                    "VALUES (@Id, @Username, @Password, @Name," +
+                command.CommandText = "INSERT INTO [Usuario]" +
+                    "VALUES (@Username, @Password, @Name," +
                     "@LastName, @Email)";
-                command.Parameters.AddWithValue("@Id", userModel.Id);
+                //command.Parameters.AddWithValue("@Id", userModel.Id);
                 command.Parameters.AddWithValue("@UserName", userModel.UserName);
                 command.Parameters.AddWithValue("@Name", userModel.Name);
-                command.Parameters.AddWithValue("LastName", userModel.LastName);
+                command.Parameters.AddWithValue("@LastName", userModel.LastName);
                 command.Parameters.AddWithValue("@Email", userModel.Email);
                 command.Parameters.AddWithValue("@Password", userModel.Password);
                 command.ExecuteNonQuery();
@@ -42,8 +42,8 @@ namespace Boletera.Repositories
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "select * from [User]" +
-                    "where Userame = @username and [Password] = @password";
+                command.CommandText = "select * from [Usuario]" +
+                    "where Username = @username and [Contrasena] = @password";
                 command.Parameters.Add("@username", System.Data.SqlDbType.NVarChar).Value = credential.UserName;
 
                 command.Parameters.Add("@password", System.Data.SqlDbType.NVarChar).Value = credential.Password;
@@ -60,7 +60,7 @@ namespace Boletera.Repositories
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "DELETE FROM [User] WHERE id = @Id";
+                command.CommandText = "DELETE FROM [Usuario] WHERE Id = @Id";
                 command.Parameters.AddWithValue("@Id", userModel.Id);
                 command.ExecuteNonQuery();
                 connection.Close();
@@ -80,8 +80,8 @@ namespace Boletera.Repositories
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "SELECT * FROM [User]" +
-                    "WHERE Userame = @username";
+                command.CommandText = "SELECT * FROM [Usuario]" +
+                    "WHERE Username = @username";
                 command.Parameters.Add("@username", SqlDbType.NVarChar).Value = username;
                 using (var reader = command.ExecuteReader())
                 {
@@ -109,9 +109,9 @@ namespace Boletera.Repositories
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "UPDATE [User] SET " +
-                    "Userame = @UserName, Name = @Name," +
-                    "LasteName = @LastName, Email = @Email WHERE id = @Id";
+                command.CommandText = "UPDATE [Usuario] SET " +
+                    "Username = @UserName, Nombre = @Name," +
+                    "Apellido = @LastName, Email = @Email WHERE Id = @Id";
                 command.Parameters.AddWithValue("@Id", userModel.Id);
                 command.Parameters.AddWithValue("@UserName", userModel.UserName);
                 command.Parameters.AddWithValue("@Name", userModel.Name);
@@ -128,7 +128,7 @@ namespace Boletera.Repositories
             List<UserModel> users = new List<UserModel>();
 
             using (var connection = GetConnection())
-            using (var command = new SqlCommand("SELECT * FROM [User]", connection))
+            using (var command = new SqlCommand("SELECT * FROM [Usuario]", connection))
             {
                 connection.Open();
                 using (var reader = command.ExecuteReader())

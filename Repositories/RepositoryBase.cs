@@ -15,7 +15,7 @@ public abstract class RepositoryBase
         public RepositoryBase()
         {
             _connectionString = "Server = DESKTOP-MRJ338U\\VSGESTION;"
-                + "Database = DataBaseProyectoUno;"
+                + "Database = Cine;"
                 + "Integrated Security = true";
         }
         protected SqlConnection GetConnection()
