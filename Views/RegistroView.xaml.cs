@@ -23,5 +23,10 @@ namespace Boletera.Views
         {
             InitializeComponent();
         }
+
+        private void btnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

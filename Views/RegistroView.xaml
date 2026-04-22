@@ -4,9 +4,152 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Boletera.Views"
+        xmlns:ViewModels ="clr-namespace:Boletera.ViewModel"
+        xmlns:CustomControls ="clr-namespace:Boletera.CustomControls"
         mc:Ignorable="d"
         Title="RegistroView" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+
+
+    <Window.DataContext>
+        <ViewModels:RegistroViewModel/>
+    </Window.DataContext>
+
+
+    <Border CornerRadius="12">
+
+        <Border CornerRadius="10" BorderThickness="2" Opacity="0.95" Margin="0,0,0,-44">
+
+
+
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <!-- Encabezado -->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="REGISTRO"
+                           Foreground="AntiqueWhite"
+                           FontSize="15"
+                           FontFamily="Montserrat"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Margin="10,0,0,0"/>
+
+                </Grid>
+
+                <!-- CUERPO -->
+                <StackPanel Width="280" Grid.Row="1" Orientation="Vertical"
+                            Margin="0,35,0,0" HorizontalAlignment="Center">
+                    <TextBlock Text="Crear nueva cuenta" Foreground="White"
+                               FontSize="20" FontWeight="Medium" HorizontalAlignment="Center"
+                               Margin="0,8,0,12" />
+
+                    <!-- Campos con placeholder -->
+
+                    <Grid Margin="0,6,0,0">
+                        <TextBox x:Name="txtUsuario" Text="{Binding User.UserName,
+                            UpdateSourceTrigger=PropertyChanged}"
+                            FontSize="13" FontWeight="Medium" Foreground="White"
+                                 CaretBrush="LightGray"
+                            BorderBrush="DarkGray" BorderThickness="0,0,0,2"
+                                 Height="28" VerticalContentAlignment="Center"
+                            Padding="20,0,0,0" Background="Transparent"/>
+                        <TextBlock Text="Usuario" Foreground="DarkGray" IsHitTestVisible="False"
+                            Margin="25,0,0,0" VerticalAlignment="Center"/>
+                    </Grid>
+                    <!-- Passwords -->
+                    <Grid Margin="0,6,0,0">
+                        <TextBox x:Name="txtPassword" Text="{Binding User.Password,
+                            UpdateSourceTrigger=PropertyChanged}" FontSize="13" FontWeight="Medium" Foreground="DarkBlue" CaretBrush="LightGray"
+                            BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28"
+                            VerticalContentAlignment="Center" Padding="20,0,0,0" Background="Transparent"/>
+                        <TextBlock Text="Contraseña" Foreground="DarkGray" IsHitTestVisible="False"
+                            Margin="25,0,0,0" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Margin="0,6,0,0">
+                        <TextBox x:Name="txtConfirmPass" Text="{Binding User.ConfirmPassword,
+                                 UpdateSourceTrigger=PropertyChanged}" FontSize="13" FontWeight="Medium"
+                                 Foreground="DarkBlue" CaretBrush="LightGray" BorderBrush="DarkGray"
+                                 BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center"
+                                 Padding="20,0,0,0" Background="Transparent"/>
+                        <TextBlock Text="Confirmar Contraseña" Foreground="DarkGray" IsHitTestVisible="False"
+                                 Margin="25,0,0,0" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Margin="0,6,0,0">
+                        <TextBox x:Name="txtNombre" Text="{Binding User.Name, UpdateSourceTrigger=PropertyChanged}"
+                                 FontSize="13" FontWeight="Medium" Foreground="White" CaretBrush="LightGray"
+                                 BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28"
+                                 VerticalContentAlignment="Center" Padding="20,0,0,0" Background="Transparent"/>
+                        <TextBlock Text="Nombre" Foreground="DarkGray" IsHitTestVisible="False" Margin="25,0,0,0"/>
+                    </Grid>
+
+                    <Grid Margin="0,6,0,0">
+                        <TextBox x:Name="txtApellido" Text="{Binding User.LastName, 
+                            UpdateSourceTrigger=PropertyChanged}"
+                                 FontSize="13" FontWeight="Medium" Foreground="White" CaretBrush="LightGray"
+                                 BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center"
+                                 Padding="20,0,0,0" Background="Transparent"/>
+                        <TextBlock Text="Apellido" Foreground="DarkGray" IsHitTestVisible="False"
+                                   Margin="25,0,0,0" VerticalAlignment="Center"/>
+                    </Grid>
+
+                    <Grid Margin="0,6,0,0">
+                        <TextBox x:Name="txtCorreo" Text="{Binding User.Email,UpdateSourceTrigger=PropertyChanged}"
+                                 FontSize="13" FontWeight="Medium" Foreground="White" CaretBrush="LightGray"
+                                 BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28"
+                                 VerticalContentAlignment="Center" Padding="20,0,0,0" Background="Transparent"/>
+                        <TextBlock Text="Correo electrónico" Foreground="DarkGray" IsHitTestVisible="False"
+                                   Margin="25,0,0,0" VerticalAlignment="Center"/>
+                    </Grid>
+
+                    <!-- Mensaje de error -->
+                    <TextBlock Text="{Binding ErrorMessage}" Foreground="#D7596D" FontSize="12"
+                               FontWeight="Medium" Margin="0,10,0,0" TextWrapping="Wrap"/>
+
+                    <!-- Botón registrar -->
+                    <Button x:Name="btnRegistrar" Command="{Binding AddCommand}" BorderThickness="0"
+                         Content="REGISTRAR" Foreground="DarkGray" FontSize="14" Cursor="Hand" Margin="0,12,0,0">
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Background" Value="#462AD8"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#28AEED"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Width="150" Height="40" CornerRadius="20"
+                                        Background="{TemplateBinding Background}">
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+
+
+                    <!-- Botón registrar -->
+                    <Button x:Name="btnCancelar" BorderThickness="0"
+                            Content="CANCELAR"
+                            Foreground="White" FontSize="12" Cursor="Hand" Margin="0,8,0,0"
+                            Background="Transparent"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Border>
+
+
+
 </Window>
