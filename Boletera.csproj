@@ -58,12 +58,16 @@
     <Compile Include="CustomControls\BindablePasswordBox.xaml.cs">
       <DependentUpon>BindablePasswordBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\IPeliculaRepository.cs" />
     <Compile Include="Model\IUserRepository.cs" />
+    <Compile Include="Model\PeliculaModel.cs" />
     <Compile Include="Model\UserAcoutnModel.cs" />
     <Compile Include="Model\UserModel.cs" />
+    <Compile Include="Repositories\PeliculaRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\ManejoPeliculaViewModel.cs" />
     <Compile Include="ViewModel\ManejoUsuariosViewModel.cs" />
     <Compile Include="ViewModel\RegistroViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
@@ -73,6 +77,9 @@
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegistrarPeliculaView.xaml.cs">
+      <DependentUpon>RegistrarPeliculaView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RegistroView.xaml.cs">
       <DependentUpon>RegistroView.xaml</DependentUpon>
@@ -98,6 +105,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RegistrarPeliculaView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

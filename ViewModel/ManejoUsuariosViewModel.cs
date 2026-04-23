@@ -87,7 +87,7 @@ namespace Boletera.ViewModel
             }
             userRepository.Update(user);
             MessageBox.Show("Usuario actualizado correctamente.");
-            // LoadUsers();
+            LoadUsers();
         }
         private void ExecuteDeleteUser(object obj)
         {

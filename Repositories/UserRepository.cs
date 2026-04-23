@@ -33,7 +33,7 @@ namespace Boletera.Repositories
 
             }
         }
-
+        //revisar para futuro cambio de inicio de sesion de username a email
         public bool AuthenticateUser(NetworkCredential credential)
         {
             bool ValidUser;
