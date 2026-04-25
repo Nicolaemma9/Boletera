@@ -20,7 +20,7 @@ namespace Boletera.Repositories
                 command.CommandText = "INSERT INTO [Pelicula]" +
                     "VALUES (@Nombre, @Precio, @Sala," +
                     "@Idioma, @Subtitulos, @Horarios)";
-                //command.Parameters.AddWithValue("@Id", userModel.Id);
+                //command.Parameters.AddWithValue("@Id", userModel.Id); //claro que no funciona. la base de datos crea su propia PK ._.
                 command.Parameters.AddWithValue("@Nombre", peliculaModel.Nombre);
                 command.Parameters.AddWithValue("@Precio", peliculaModel.Precio);
                 command.Parameters.AddWithValue("@Sala", peliculaModel.Sala);

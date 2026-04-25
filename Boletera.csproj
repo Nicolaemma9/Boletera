@@ -70,6 +70,7 @@
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\ManejoPeliculaViewModel.cs" />
     <Compile Include="ViewModel\ManejoUsuariosViewModel.cs" />
+    <Compile Include="ViewModel\RegistrarPeliculaViewModel.cs" />
     <Compile Include="ViewModel\RegistroViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\ViewModelCommand.cs" />

@@ -4,9 +4,127 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Boletera.Views"
+        xmlns:vm="clr-namespace:Boletera.ViewModel"
         mc:Ignorable="d"
         Title="RegistrarPeliculaView" Height="450" Width="800">
+    
+    <Window.DataContext>
+        <vm:RegistrarPeliculaViewModel/>
+    </Window.DataContext>
+
+    <!-- FONDO -->
     <Grid>
-        
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#1E3A8A" Offset="0"/>
+                <GradientStop Color="#2563EB" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <!-- TARJETA CENTRAL -->
+        <Border Width="450"
+                Padding="35"
+                CornerRadius="5"
+                Background="White"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+
+            <StackPanel>
+
+                <!-- TITULO -->
+                <TextBlock Text="🎬 Registrar Película"
+                           FontSize="26"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           Foreground="#1E3A8A"
+                           Margin="0,0,0,20"/>
+
+                <TextBlock Text="Agrega una nueva película a la cartelera"
+                           FontSize="14"
+                           Foreground="#6B7280"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,25"/>
+
+                <!-- NOMBRE -->
+                <TextBlock Text="Nombre" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                <TextBox Height="40"
+                         FontSize="14"
+                         Padding="10"
+                         Background="#F3F4F6"
+                         BorderThickness="0"
+                         Margin="0,0,0,15"
+                         Text="{Binding Pelicula.Nombre, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <!-- PRECIO -->
+                <TextBlock Text="Precio" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                <TextBox Height="40"
+                         FontSize="14"
+                         Padding="10"
+                         Background="#F3F4F6"
+                         BorderThickness="0"
+                         Margin="0,0,0,15"
+                         Text="{Binding Pelicula.Precio, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <!-- SALA -->
+                <TextBlock Text="Sala" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                <TextBox Height="40"
+                         FontSize="14"
+                         Padding="10"
+                         Background="#F3F4F6"
+                         BorderThickness="0"
+                         Margin="0,0,0,15"
+                         Text="{Binding Pelicula.Sala, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <!-- IDIOMA -->
+                <TextBlock Text="Idioma" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                <TextBox Height="40"
+                         FontSize="14"
+                         Padding="10"
+                         Background="#F3F4F6"
+                         BorderThickness="0"
+                         Margin="0,0,0,15"
+                         Text="{Binding Pelicula.Idioma, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <!-- SUBTITULOS -->
+                <TextBlock Text="Subtítulos" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                <TextBox Height="40"
+                         FontSize="14"
+                         Padding="10"
+                         Background="#F3F4F6"
+                         BorderThickness="0"
+                         Margin="0,0,0,15"
+                         Text="{Binding Pelicula.Subtitulos, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <!-- HORARIOS -->
+                <TextBlock Text="Horarios" FontWeight="SemiBold" Margin="0,0,0,5"/>
+                <TextBox Height="40"
+                         FontSize="14"
+                         Padding="10"
+                         Background="#F3F4F6"
+                         BorderThickness="0"
+                         Margin="0,0,0,15"
+                         Text="{Binding Pelicula.Horarios, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <!-- ERROR -->
+                <TextBlock Text="{Binding ErrorMessage}"
+                           Foreground="#DC2626"
+                           FontWeight="SemiBold"
+                           Margin="0,5,0,10"
+                           TextWrapping="Wrap"
+                           TextAlignment="Center"/>
+
+                <!-- BOTÓN GUARDAR -->
+                <Button Content="Guardar Película"
+                        Height="45"
+                        Margin="0,10,0,0"
+                        Background="#22C55E"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Command="{Binding AddCommand}"/>
+
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>
