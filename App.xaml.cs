@@ -1,4 +1,5 @@
-﻿using Boletera.Views;
+﻿using Boletera.ViewModel;
+using Boletera.Views;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -16,7 +17,7 @@ namespace Boletera
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            var loginView = new LoginView();
+            var loginView = new Boletera.Views.LoginView();
             loginView.Show();
         }
     }

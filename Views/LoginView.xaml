@@ -16,41 +16,94 @@
         <ViewModel:LoginViewModel/>
     </Window.DataContext>
 
+    <!-- FONDO -->
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#1E3A8A" Offset="0"/>
+                <GradientStop Color="#2563EB" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
 
+        <!-- TARJETA CENTRAL -->
+        <Border Width="400"
+                Padding="35"
+                CornerRadius="5"
+                Background="White"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
 
-    <Grid Margin="20">
-        <StackPanel VerticalAlignment="Center">
-            <TextBlock Text="CineApp" FontSize="24" FontWeight="Bold" 
-                       HorizontalAlignment="Center" Margin="0,0,0,20"/>
+            <StackPanel>
 
-            <TextBlock Text="Usuario:"/>
-            <TextBox x:Name="txtUsuario"
-                       Text="{Binding Username}"
-                       Margin="0,5,0,10" Height="30"/>
+                <!-- TITULO -->
+                <TextBlock Text="🎬 CineApp"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           Foreground="#1E3A8A"
+                           Margin="0,0,0,30"/>
 
+                <!-- USUARIO -->
+                <TextBlock Text="Usuario"
+                           FontWeight="SemiBold"
+                           Margin="0,0,0,5"/>
 
-            <TextBlock Text="contraseña"/>
-            <CustomControls:BindablePasswordBox
-                        Password="{Binding Password, Mode=TwoWay,
-                        UpdateSourceTrigger=PropertyChanged}">
+                <TextBox Height="40"
+                         FontSize="14"
+                         Padding="10"
+                         Background="#F3F4F6"
+                         BorderThickness="0"
+                         Margin="0,0,0,15"
+                         Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}"/>
 
-            </CustomControls:BindablePasswordBox>
-            <TextBlock Text="{Binding ErrorMessage}"
-                               Foreground="#D7596D"
-                               FontWeight="Medium"
-                               Margin="0,10,0,0"
-                               TextWrapping="Wrap"/>
+                <!-- PASSWORD -->
+                <TextBlock Text="Contraseña"
+                           FontWeight="SemiBold"
+                           Margin="0,0,0,5"/>
 
-            <Button Content="Iniciar Sesión" 
-                    Command="{Binding LoginCommand}"
-                    Height="35" 
-                    Background="#0078D7" 
-                    Foreground="White"
-                    FontWeight="Bold"/>
-            
-        </StackPanel>
-        <Button Content="Registrarse"
-                Height="35" Margin="0,335,0,29"
-                Click="Button_Click"/>
+                <Border Background="#F3F4F6"
+                        CornerRadius="5"
+                        Padding="5"
+                        Margin="0,0,0,10">
+
+                    <CustomControls:BindablePasswordBox
+                        Height="30"
+                        BorderThickness="0"
+                        Background="Transparent"
+                        Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </Border>
+
+                <!-- ERROR -->
+                <TextBlock Text="{Binding ErrorMessage}"
+                           Foreground="#DC2626"
+                           FontWeight="SemiBold"
+                           Margin="0,5,0,10"
+                           TextWrapping="Wrap"
+                           TextAlignment="Center"/>
+
+                <!-- BOTÓN LOGIN -->
+                <Button Content="Iniciar Sesión"
+                        Height="45"
+                        Margin="0,10,0,10"
+                        Background="#2563EB"
+                        Foreground="White"
+                        FontWeight="Bold"
+                        BorderThickness="0"
+                        Cursor="Hand"
+                        Command="{Binding LoginCommand}"/>
+
+                <!-- REGISTRO -->
+                <Button Content="Registrarse"
+                        Height="40"
+                        Background="Transparent"
+                        BorderBrush="#2563EB"
+                        BorderThickness="2"
+                        Foreground="#2563EB"
+                        FontWeight="Bold"
+                        Cursor="Hand"
+                        Click="Button_Click"/>
+
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>

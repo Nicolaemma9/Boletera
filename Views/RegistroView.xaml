@@ -14,124 +14,154 @@
         <ViewModels:RegistroViewModel/>
     </Window.DataContext>
 
+    <!-- FONDO -->
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#1E3A8A" Offset="0"/>
+                <GradientStop Color="#2563EB" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
 
-    <Border CornerRadius="12">
+        <!-- TARJETA CENTRAL -->
+        <Border Width="450"
+                Padding="35"
+                CornerRadius="5"
+                Background="White"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
 
-        <Border CornerRadius="10" BorderThickness="2" Opacity="0.95" Margin="0,0,0,-44">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
 
+                <StackPanel>
 
+                    <!-- TITULO -->
+                    <TextBlock Text="Registro"
+                               FontSize="28"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Center"
+                               Foreground="#1E3A8A"
+                               Margin="0,0,0,20"/>
 
+                    <TextBlock Text="Crear nueva cuenta"
+                               FontSize="14"
+                               Foreground="#6B7280"
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,25"/>
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+                    <!-- USUARIO -->
+                    <TextBlock Text="Usuario"
+                               FontWeight="SemiBold"
+                               Margin="0,0,0,5"/>
 
-                <!-- Encabezado -->
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="25"/>
-                        <ColumnDefinition Width="25"/>
-                        <ColumnDefinition Width="5"/>
-                    </Grid.ColumnDefinitions>
+                    <TextBox Height="40"
+                             FontSize="14"
+                             Padding="10"
+                             Background="#F3F4F6"
+                             BorderThickness="0"
+                             Margin="0,0,0,15"
+                             Text="{Binding User.UserName, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <TextBlock Text="REGISTRO"
-                           Foreground="AntiqueWhite"
-                           FontSize="15"
-                           FontFamily="Montserrat"
-                           Grid.Column="0"
-                           VerticalAlignment="Center"
-                           Margin="10,0,0,0"/>
+                    <!-- CONTRASEÑA -->
+                    <TextBlock Text="Contraseña"
+                               FontWeight="SemiBold"
+                               Margin="0,0,0,5"/>
 
-                </Grid>
+                    <TextBox Height="40"
+                             FontSize="14"
+                             Padding="10"
+                             Background="#F3F4F6"
+                             BorderThickness="0"
+                             Margin="0,0,0,15"
+                             Text="{Binding User.Password, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <!-- CUERPO -->
-                <StackPanel Width="280" Grid.Row="1" Orientation="Vertical"
-                            Margin="0,35,0,0" HorizontalAlignment="Center">
-                    <TextBlock Text="Crear nueva cuenta" Foreground="White"
-                               FontSize="20" FontWeight="Medium" HorizontalAlignment="Center"
-                               Margin="0,8,0,12" />
+                    <!-- CONFIRMAR CONTRASEÑA -->
+                    <TextBlock Text="Confirmar Contraseña"
+                               FontWeight="SemiBold"
+                               Margin="0,0,0,5"/>
 
-                    <!-- Campos con placeholder -->
+                    <TextBox Height="40"
+                             FontSize="14"
+                             Padding="10"
+                             Background="#F3F4F6"
+                             BorderThickness="0"
+                             Margin="0,0,0,15"
+                             Text="{Binding User.ConfirmPassword, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <Grid Margin="0,6,0,0">
-                        <TextBox x:Name="txtUsuario" Text="{Binding User.UserName,
-                            UpdateSourceTrigger=PropertyChanged}"
-                            FontSize="13" FontWeight="Medium" Foreground="White"
-                                 CaretBrush="LightGray"
-                            BorderBrush="DarkGray" BorderThickness="0,0,0,2"
-                                 Height="28" VerticalContentAlignment="Center"
-                            Padding="20,0,0,0" Background="Transparent"/>
-                        <TextBlock Text="Usuario" Foreground="DarkGray" IsHitTestVisible="False"
-                            Margin="25,0,0,0" VerticalAlignment="Center"/>
-                    </Grid>
-                    <!-- Passwords -->
-                    <Grid Margin="0,6,0,0">
-                        <TextBox x:Name="txtPassword" Text="{Binding User.Password,
-                            UpdateSourceTrigger=PropertyChanged}" FontSize="13" FontWeight="Medium" Foreground="DarkBlue" CaretBrush="LightGray"
-                            BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28"
-                            VerticalContentAlignment="Center" Padding="20,0,0,0" Background="Transparent"/>
-                        <TextBlock Text="Contraseña" Foreground="DarkGray" IsHitTestVisible="False"
-                            Margin="25,0,0,0" VerticalAlignment="Center"/>
-                    </Grid>
-                    <Grid Margin="0,6,0,0">
-                        <TextBox x:Name="txtConfirmPass" Text="{Binding User.ConfirmPassword,
-                                 UpdateSourceTrigger=PropertyChanged}" FontSize="13" FontWeight="Medium"
-                                 Foreground="DarkBlue" CaretBrush="LightGray" BorderBrush="DarkGray"
-                                 BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center"
-                                 Padding="20,0,0,0" Background="Transparent"/>
-                        <TextBlock Text="Confirmar Contraseña" Foreground="DarkGray" IsHitTestVisible="False"
-                                 Margin="25,0,0,0" VerticalAlignment="Center"/>
-                    </Grid>
-                    <Grid Margin="0,6,0,0">
-                        <TextBox x:Name="txtNombre" Text="{Binding User.Name, UpdateSourceTrigger=PropertyChanged}"
-                                 FontSize="13" FontWeight="Medium" Foreground="White" CaretBrush="LightGray"
-                                 BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28"
-                                 VerticalContentAlignment="Center" Padding="20,0,0,0" Background="Transparent"/>
-                        <TextBlock Text="Nombre" Foreground="DarkGray" IsHitTestVisible="False" Margin="25,0,0,0"/>
-                    </Grid>
+                    <!-- NOMBRE -->
+                    <TextBlock Text="Nombre"
+                               FontWeight="SemiBold"
+                               Margin="0,0,0,5"/>
 
-                    <Grid Margin="0,6,0,0">
-                        <TextBox x:Name="txtApellido" Text="{Binding User.LastName, 
-                            UpdateSourceTrigger=PropertyChanged}"
-                                 FontSize="13" FontWeight="Medium" Foreground="White" CaretBrush="LightGray"
-                                 BorderThickness="0,0,0,2" Height="28" VerticalContentAlignment="Center"
-                                 Padding="20,0,0,0" Background="Transparent"/>
-                        <TextBlock Text="Apellido" Foreground="DarkGray" IsHitTestVisible="False"
-                                   Margin="25,0,0,0" VerticalAlignment="Center"/>
-                    </Grid>
+                    <TextBox Height="40"
+                             FontSize="14"
+                             Padding="10"
+                             Background="#F3F4F6"
+                             BorderThickness="0"
+                             Margin="0,0,0,15"
+                             Text="{Binding User.Name, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <Grid Margin="0,6,0,0">
-                        <TextBox x:Name="txtCorreo" Text="{Binding User.Email,UpdateSourceTrigger=PropertyChanged}"
-                                 FontSize="13" FontWeight="Medium" Foreground="White" CaretBrush="LightGray"
-                                 BorderBrush="DarkGray" BorderThickness="0,0,0,2" Height="28"
-                                 VerticalContentAlignment="Center" Padding="20,0,0,0" Background="Transparent"/>
-                        <TextBlock Text="Correo electrónico" Foreground="DarkGray" IsHitTestVisible="False"
-                                   Margin="25,0,0,0" VerticalAlignment="Center"/>
-                    </Grid>
+                    <!-- APELLIDO -->
+                    <TextBlock Text="Apellido"
+                               FontWeight="SemiBold"
+                               Margin="0,0,0,5"/>
 
-                    <!-- Mensaje de error -->
-                    <TextBlock Text="{Binding ErrorMessage}" Foreground="#D7596D" FontSize="12"
-                               FontWeight="Medium" Margin="0,10,0,0" TextWrapping="Wrap"/>
+                    <TextBox Height="40"
+                             FontSize="14"
+                             Padding="10"
+                             Background="#F3F4F6"
+                             BorderThickness="0"
+                             Margin="0,0,0,15"
+                             Text="{Binding User.LastName, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <!-- Botón registrar -->
-                    <Button x:Name="btnRegistrar" Command="{Binding AddCommand}" BorderThickness="0"
-                         Content="REGISTRAR" FontSize="14" Cursor="Hand" Margin="0,12,0,0" Height="35">
-                    </Button>
+                    <!-- EMAIL -->
+                    <TextBlock Text="Correo electrónico"
+                               FontWeight="SemiBold"
+                               Margin="0,0,0,5"/>
 
+                    <TextBox Height="40"
+                             FontSize="14"
+                             Padding="10"
+                             Background="#F3F4F6"
+                             BorderThickness="0"
+                             Margin="0,0,0,15"
+                             Text="{Binding User.Email, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <!-- Botón Cancelar -->
-                    <Button x:Name="btnCancelar" BorderThickness="0"
-                            Content="INICIAR SESION"
-                            FontSize="12" Cursor="Hand" Margin="0,8,0,0"
+                    <!-- ERROR -->
+                    <TextBlock Text="{Binding ErrorMessage}"
+                               Foreground="#DC2626"
+                               FontWeight="SemiBold"
+                               Margin="0,5,0,10"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"/>
+
+                    <!-- BOTÓN REGISTRAR -->
+                    <Button Content="Registrar"
+                            Height="45"
+                            Margin="0,10,0,10"
+                            Background="#2563EB"
+                            Foreground="White"
+                            FontWeight="Bold"
+                            BorderThickness="0"
+                            Cursor="Hand"
+                            Command="{Binding AddCommand}"/>
+
+                    <!-- BOTÓN CANCELAR -->
+                    <Button Content="Volver al Login"
+                            Height="40"
+                            Background="Transparent"
+                            BorderBrush="#2563EB"
+                            BorderThickness="2"
+                            Foreground="#2563EB"
+                            FontWeight="Bold"
+                            Cursor="Hand"
                             Click="BtnCancelar_Click"/>
-                </StackPanel>
-            </Grid>
-        </Border>
-    </Border>
 
+                </StackPanel>
+            </ScrollViewer>
+
+        </Border>
+    </Grid>
 
 
 </Window>

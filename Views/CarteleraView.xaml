@@ -6,36 +6,152 @@
         xmlns:local="clr-namespace:Boletera.Views"
         mc:Ignorable="d"
         Title="Cartelera" Height="450" Width="800">
-    
 
 
 
-    <Grid Margin="15">
+
+
+    <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel>
-            <TextBlock Text="Usuario logueado:" FontSize="18"/>
-            <TextBlock Text="{Binding UsuarioLogueado}" FontSize="18" FontWeight="Bold"/>
+        <!-- HAEDER -->
+        <Border Background="#1E3A8A"
+                CornerRadius="5"
+                Padding="20"
+                Margin="0,0,0,15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
 
-            <DataGrid ItemsSource="{Binding Peliculas}"
-              SelectedItem="{Binding PeliculaSeleccionada}"
-              AutoGenerateColumns="False"
-              CanUserAddRows="False"
-              IsReadOnly="True">
+                <StackPanel><!--si, es mas facil usar un emoji que una imagen, 
+                    porque solo es buscar en google "emoji x"
+                    copiar y pegar y se ve bien. -->
+                    <TextBlock Text="🎬 Cartelera" 
+                               Foreground="White"
+                               FontSize="28"
+                               FontWeight="Bold"/>
 
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*"/>
-                    <DataGridTextColumn Header="Precio" Binding="{Binding Precio}" Width="100"/>
-                    <DataGridTextColumn Header="Sala" Binding="{Binding Sala}" Width="100"/>
-                    <DataGridTextColumn Header="Idioma" Binding="{Binding Idioma}" Width="120"/>
-                    <DataGridTextColumn Header="Subtítulos" Binding="{Binding Subtitulos}" Width="120"/>
-                    <DataGridTextColumn Header="Horarios" Binding="{Binding Horarios}" Width="200"/>
-                </DataGrid.Columns>
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <TextBlock Text="Usuario logueado: "
+                                   Foreground="#D1D5DB"
+                                   FontSize="14"/>
 
-            </DataGrid>
-        </StackPanel>
+                        <TextBlock Text="{Binding UsuarioLogueado}"
+                                   Foreground="White"
+                                   FontSize="14"
+                                   FontWeight="Bold"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <TextBlock Grid.Column="1"
+                           Text="BOLETERA"
+                           Foreground="#93C5FD"
+                           FontSize="18"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+
+        <!-- CONTEIDO PRINCIPAL -->
+        <Border Grid.Row="1"
+                Background="White"
+                CornerRadius="15"
+                Padding="15"
+                BorderBrush="#E5E7EB"
+                BorderThickness="1">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- TITULO, si, es mejor usar el emoji aqui.  -->
+                <TextBlock Text="📌 Películas disponibles"
+                           FontSize="18"
+                           FontWeight="Bold"
+                           Foreground="#111827"
+                           Margin="5,0,0,10"/>
+
+                <!-- DATAGIRD (con pelis y usuarios ) -->
+                <DataGrid Grid.Row="1"
+                          ItemsSource="{Binding Peliculas}"
+                          SelectedItem="{Binding PeliculaSeleccionada}"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False"
+                          IsReadOnly="True"
+                          FontSize="14"
+                          RowHeight="35"
+                          GridLinesVisibility="None"
+                          Background="White"
+                          BorderThickness="0"
+                          AlternatingRowBackground="#F9FAFB"
+                          HeadersVisibility="Column">
+
+                    <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="#E0E7FF"/>
+                            <Setter Property="Foreground" Value="#1E3A8A"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="FontSize" Value="14"/>
+                            <Setter Property="Height" Value="40"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Padding" Value="10,0,0,0"/>
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
+
+                    <DataGrid.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Setter Property="Padding" Value="10,0,0,0"/>
+                        </Style>
+                    </DataGrid.CellStyle>
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*"/>
+                        <DataGridTextColumn Header="Precio" Binding="{Binding Precio}" Width="90"/>
+                        <DataGridTextColumn Header="Sala" Binding="{Binding Sala}" Width="90"/>
+                        <DataGridTextColumn Header="Idioma" Binding="{Binding Idioma}" Width="120"/>
+                        <DataGridTextColumn Header="Subtítulos" Binding="{Binding Subtitulos}" Width="120"/>
+                        <DataGridTextColumn Header="Horarios" Binding="{Binding Horarios}" Width="180"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <!-- BOTONES (no sirven) -->
+                <StackPanel Grid.Row="2"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            Margin="0,15,0,0">
+
+                    <Button Content="Actualizar"
+                            Width="120"
+                            Height="38"
+                            Margin="5"
+                            Background="#2563EB"
+                            Foreground="White"
+                            FontWeight="Bold"
+                            BorderThickness="0"
+                            Cursor="Hand"/>
+
+                    <Button Content="Cerrar sesión"
+                            Click="Button_Click"
+                            Width="140"
+                            Height="38"
+                            Margin="5"
+                            Background="#DC2626"
+                            Foreground="White"
+                            FontWeight="Bold"
+                            BorderThickness="0"
+                            Cursor="Hand"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
     </Grid>
 </Window>
