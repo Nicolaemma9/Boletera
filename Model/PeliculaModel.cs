@@ -17,5 +17,7 @@ namespace Boletera.Model
 
         public string Subtitulos { get; set; }
 
+        public string Horarios { get; set; }
+
     }
 }

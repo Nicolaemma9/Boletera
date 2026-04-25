@@ -19,13 +19,14 @@ namespace Boletera.Repositories
                 command.Connection = connection;
                 command.CommandText = "INSERT INTO [Pelicula]" +
                     "VALUES (@Nombre, @Precio, @Sala," +
-                    "@Idioma, @Subtitulos)";
+                    "@Idioma, @Subtitulos, @Horarios)";
                 //command.Parameters.AddWithValue("@Id", userModel.Id);
                 command.Parameters.AddWithValue("@Nombre", peliculaModel.Nombre);
                 command.Parameters.AddWithValue("@Precio", peliculaModel.Precio);
                 command.Parameters.AddWithValue("@Sala", peliculaModel.Sala);
                 command.Parameters.AddWithValue("@Idioma", peliculaModel.Idioma);
                 command.Parameters.AddWithValue("@Subtitulos", peliculaModel.Subtitulos);
+                command.Parameters.AddWithValue("@Horarios", peliculaModel.Horarios);
                 command.ExecuteNonQuery();
                 connection.Close();
 
@@ -57,12 +58,13 @@ namespace Boletera.Repositories
                 command.Connection = connection;
                 command.CommandText = "UPDATE [Pelicula] SET " +
                     "Nombre = @Nombre, Precio = @Precio," +
-                    "Idioma = @Idioma, Subtitulos = @Subtitulos WHERE Id = @Id";
+                    "Idioma = @Idioma, Subtitulos = @Subtitulos, Horarios = @Horarios WHERE Id = @Id";
                 command.Parameters.AddWithValue("@Id", peliculaModel.Id);
                 command.Parameters.AddWithValue("@Nombre", peliculaModel.Nombre);
                 command.Parameters.AddWithValue("@Precio", peliculaModel.Precio);
                 command.Parameters.AddWithValue("@Idioma", peliculaModel.Idioma);
                 command.Parameters.AddWithValue("@Subtitulos", peliculaModel.Subtitulos);
+                command.Parameters.AddWithValue("@Horarios", peliculaModel.Horarios);
 
                 command.ExecuteNonQuery();
                 connection.Close();
@@ -87,7 +89,8 @@ namespace Boletera.Repositories
                             Precio = string.Empty,
                             Sala = reader[3].ToString(),
                             Idioma = reader[4].ToString(),
-                            Subtitulos = reader[5].ToString()
+                            Subtitulos = reader[5].ToString(),
+                            Horarios = reader[6].ToString()
                         });
                     }
                 }

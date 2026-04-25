@@ -63,7 +63,7 @@ namespace Boletera.ViewModel
             }
             catch
             {
-                MessageBox.Show("Error al cargar los usuarios.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error al cargar las peliculas.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

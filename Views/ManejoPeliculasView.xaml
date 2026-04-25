@@ -46,6 +46,7 @@
                 <DataGridTextColumn Header="Sala" Binding="{Binding Sala}" Width="*" />
                 <DataGridTextColumn Header="Idioma" Binding="{Binding Idioma}" Width="*" />
                 <DataGridTextColumn Header="subtitulos" Binding="{Binding Subtitulos}" Width="*" />
+                <DataGridTextColumn Header="Horarios" Binding="{Binding Horarios}" Width="*" />
                 <DataGridTemplateColumn Header="Acciones" Width="200">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
