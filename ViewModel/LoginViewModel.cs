@@ -134,7 +134,7 @@ namespace Boletera.ViewModel
             }
             else
             {
-                ErrorMessage = "*invalid password or usarname";
+                ErrorMessage = "*Usuario o contraseña invalidos";
             }
         }
     }

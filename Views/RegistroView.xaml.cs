@@ -24,9 +24,24 @@ namespace Boletera.Views
             InitializeComponent();
         }
 
-        private void btnCancelar_Click(object sender, RoutedEventArgs e)
+        private void BtnCancelar_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            // Crear nueva ventana
+            var InicioSesionView = new LoginView();
+            // Asignarla como ventana principal
+            Application.Current.MainWindow = InicioSesionView;
+            // Mostrarla
+            InicioSesionView.Show();
+            // Cerrar la anterior (login)
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window != InicioSesionView)
+                {
+                    window.Close();
+                    break;
+                }
+            }
+
         }
     }
 }

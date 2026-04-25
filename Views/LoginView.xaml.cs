@@ -24,6 +24,26 @@ namespace Boletera.Views
             InitializeComponent();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // Crear nueva ventana
+            var RegistroView = new RegistroView();
+            // Asignarla como ventana principal
+            Application.Current.MainWindow = RegistroView;
+            // Mostrarla
+            RegistroView.Show();
+            // Cerrar la anterior (login)
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window != RegistroView)
+                {
+                    window.Close();
+                    break;
+                }
+
+
+            }
+        }
     }
 
 }

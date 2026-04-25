@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Boletera.Views"
         xmlns:CustomControls ="clr-namespace:Boletera.CustomControls"
         mc:Ignorable="d"
-        Title="LoginView" Height="450" Width="800"
+        Title="LoginView" Height="550" Width="800"
         
         xmlns:ViewModel="clr-namespace:Boletera.ViewModel">
 
@@ -49,5 +49,8 @@
                     FontWeight="Bold"/>
             
         </StackPanel>
+        <Button Content="Registrarse"
+                Height="35" Margin="0,335,0,29"
+                Click="Button_Click"/>
     </Grid>
 </Window>

@@ -78,6 +78,9 @@
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ManejoPeliculasView.xaml.cs">
+      <DependentUpon>ManejoPeliculasView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\RegistrarPeliculaView.xaml.cs">
       <DependentUpon>RegistrarPeliculaView.xaml</DependentUpon>
     </Compile>
@@ -105,6 +108,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ManejoPeliculasView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
