@@ -66,6 +66,7 @@
     <Compile Include="Repositories\PeliculaRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="ViewModel\CarteleraViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\ManejoPeliculaViewModel.cs" />
     <Compile Include="ViewModel\ManejoUsuariosViewModel.cs" />

@@ -116,6 +116,11 @@ namespace Boletera.ViewModel
                     new GenericIdentity(Username), null); //antes Username
                 // Crear nueva ventana
                 var manejadorView = new CarteleraView();
+
+                //guardar el usuario logueado --prueba
+                manejadorView.DataContext = new CarteleraViewModel(Username);
+
+
                 // Asignarla como ventana principal
                 Application.Current.MainWindow = manejadorView;
                 // Mostrarla

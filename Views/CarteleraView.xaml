@@ -5,8 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Boletera.Views"
         mc:Ignorable="d"
-        Title="CarteleraView" Height="450" Width="800">
-    <Grid>
-        
+        Title="Cartelera" Height="450" Width="800">
+    
+
+
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel>
+            <TextBlock Text="Usuario logueado:" FontSize="18"/>
+            <TextBlock Text="{Binding UsuarioLogueado}" FontSize="18" FontWeight="Bold"/>
+
+            <DataGrid ItemsSource="{Binding Peliculas}"
+              SelectedItem="{Binding PeliculaSeleccionada}"
+              AutoGenerateColumns="False"
+              CanUserAddRows="False"
+              IsReadOnly="True">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*"/>
+                    <DataGridTextColumn Header="Precio" Binding="{Binding Precio}" Width="100"/>
+                    <DataGridTextColumn Header="Sala" Binding="{Binding Sala}" Width="100"/>
+                    <DataGridTextColumn Header="Idioma" Binding="{Binding Idioma}" Width="120"/>
+                    <DataGridTextColumn Header="Subtítulos" Binding="{Binding Subtitulos}" Width="120"/>
+                    <DataGridTextColumn Header="Horarios" Binding="{Binding Horarios}" Width="200"/>
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </StackPanel>
     </Grid>
 </Window>
