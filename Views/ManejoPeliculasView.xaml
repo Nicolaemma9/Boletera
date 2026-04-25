@@ -24,7 +24,7 @@
 
         <Border Background="#2D3E50" CornerRadius="10" Padding="15" Margin="0,0,0,15">
             <DockPanel>
-                <TextBlock Text="Gestión de Usuarios" Foreground="White"
+                <TextBlock Text="Gestión Peliculas" Foreground="White"
                    FontSize="22" FontWeight="Bold" DockPanel.Dock="Left"/>
                 <Button Content="Agregar" Command="{Binding AddCommand}"
                 Background="#4CAF50" Foreground="White"
@@ -35,15 +35,17 @@
             </DockPanel>
         </Border>
 
-        <DataGrid ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser}"
+        <DataGrid ItemsSource="{Binding Pelicula}" SelectedItem="{Binding PeliculaSellecionada}"
           AutoGenerateColumns="False" HeadersVisibility="Column" CanUserAddRows="False"
           RowHeight="35" AlternatingRowBackground="#F9F9F9"
           SelectionMode="Single" GridLinesVisibility="None" Margin="0,74,0,0" Grid.RowSpan="3">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
-                <DataGridTextColumn Header="User" Binding="{Binding UserName}" Width="*" />
-                <DataGridTextColumn Header="Lastname" Binding="{Binding LastName}" Width="*" />
-                <DataGridTextColumn Header="Correo" Binding="{Binding Email}" Width="2*" />
+                <DataGridTextColumn Header="Pelicula" Binding="{Binding Nombre}" Width="*" />
+                <DataGridTextColumn Header="Precio" Binding="{Binding Precio}" Width="*" />
+                <DataGridTextColumn Header="Sala" Binding="{Binding Sala}" Width="*" />
+                <DataGridTextColumn Header="Idioma" Binding="{Binding Idioma}" Width="*" />
+                <DataGridTextColumn Header="subtitulos" Binding="{Binding Subtitulos}" Width="*" />
                 <DataGridTemplateColumn Header="Acciones" Width="200">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -65,31 +67,31 @@
             Margin="0,15,0,0">
 
             <StackPanel Orientation="Vertical">
-                <TextBlock Text="Usuario" FontWeight="Bold" />
-                <TextBox Width="200" Text="{Binding SelectedUser.UserName, Mode=TwoWay,
+                <TextBlock Text="Pelicula" FontWeight="Bold" />
+                <TextBox Width="200" Text="{Binding PeliculaSellecionada.Nombre, Mode=TwoWay,
                     UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 
             <StackPanel Orientation="Vertical">
-                <TextBlock Text="Correo" FontWeight="Bold" />
-                <TextBox Width="250" Text="{Binding SelectedUser.Email, Mode=TwoWay,
+                <TextBlock Text="Precio" FontWeight="Bold" />
+                <TextBox Width="250" Text="{Binding PeliculaSellecionada.Precio, Mode=TwoWay,
                     UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 
             <StackPanel Orientation="Vertical">
-                <TextBlock Text="Nombre" FontWeight="Bold" />
-                <TextBox Width="150" Text="{Binding SelectedUser.Name, Mode=TwoWay, 
+                <TextBlock Text="sala" FontWeight="Bold" />
+                <TextBox Width="150" Text="{Binding PeliculaSellecionada.Sala, Mode=TwoWay, 
                     UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 
             <StackPanel Orientation="Vertical">
-                <TextBlock Text="Apellido" FontWeight="Bold" />
-                <TextBox Width="150" Text="{Binding SelectedUser.LastName, Mode=TwoWay, 
+                <TextBlock Text="Idioma" FontWeight="Bold" />
+                <TextBox Width="150" Text="{Binding PeliculaSellecionada.Idioma, Mode=TwoWay, 
                     UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 
             <Button Content="Guardar cambios" Command="{Binding EditCommand}" 
-                    CommandParameter="{Binding SelectedUser}"
+                    CommandParameter="{Binding PeliculaSellecionada}"
             Background="#2196F3" Foreground="White" Padding="10,5" Width="150"
                     VerticalAlignment="Bottom" />
         </StackPanel>
