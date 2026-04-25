@@ -75,19 +75,31 @@
 
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Precio" FontWeight="Bold" />
-                <TextBox Width="250" Text="{Binding PeliculaSellecionada.Precio, Mode=TwoWay,
+                <TextBox Width="100" Text="{Binding PeliculaSellecionada.Precio, Mode=TwoWay,
                     UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="sala" FontWeight="Bold" />
-                <TextBox Width="150" Text="{Binding PeliculaSellecionada.Sala, Mode=TwoWay, 
+                <TextBox Width="100" Text="{Binding PeliculaSellecionada.Sala, Mode=TwoWay, 
                     UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 
             <StackPanel Orientation="Vertical">
                 <TextBlock Text="Idioma" FontWeight="Bold" />
                 <TextBox Width="150" Text="{Binding PeliculaSellecionada.Idioma, Mode=TwoWay, 
+                    UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Subtitulos" FontWeight="Bold" />
+                <TextBox Width="150" Text="{Binding PeliculaSellecionada.Subtitulos, Mode=TwoWay, 
+                    UpdateSourceTrigger=PropertyChanged}" />
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Horarios" FontWeight="Bold" />
+                <TextBox Width="150" Text="{Binding PeliculaSellecionada.Horarios, Mode=TwoWay, 
                     UpdateSourceTrigger=PropertyChanged}" />
             </StackPanel>
 

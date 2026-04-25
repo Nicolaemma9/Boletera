@@ -58,10 +58,11 @@ namespace Boletera.Repositories
                 command.Connection = connection;
                 command.CommandText = "UPDATE [Pelicula] SET " +
                     "Nombre = @Nombre, Precio = @Precio," +
-                    "Idioma = @Idioma, Subtitulos = @Subtitulos, Horarios = @Horarios WHERE Id = @Id";
+                    "Sala = @Sala, Idioma = @Idioma, Subtitulos = @Subtitulos, Horarios = @Horarios WHERE Id = @Id";
                 command.Parameters.AddWithValue("@Id", peliculaModel.Id);
                 command.Parameters.AddWithValue("@Nombre", peliculaModel.Nombre);
                 command.Parameters.AddWithValue("@Precio", peliculaModel.Precio);
+                command.Parameters.AddWithValue("@Sala",peliculaModel.Sala);
                 command.Parameters.AddWithValue("@Idioma", peliculaModel.Idioma);
                 command.Parameters.AddWithValue("@Subtitulos", peliculaModel.Subtitulos);
                 command.Parameters.AddWithValue("@Horarios", peliculaModel.Horarios);
@@ -86,7 +87,7 @@ namespace Boletera.Repositories
                         {
                             Id = reader[0].ToString(),
                             Nombre = reader[1].ToString(),
-                            Precio = string.Empty,
+                            Precio = (decimal)reader["Precio"],
                             Sala = reader[3].ToString(),
                             Idioma = reader[4].ToString(),
                             Subtitulos = reader[5].ToString(),

@@ -16,7 +16,7 @@ namespace Boletera
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            var loginView = new LoginView();
+            var loginView = new ManejoPeliculasView();
             loginView.Show();
         }
     }

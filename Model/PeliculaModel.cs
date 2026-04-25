@@ -10,7 +10,7 @@ namespace Boletera.Model
     {
         public string Id { get; set; }
         public string Nombre { get; set; }
-        public string Precio { get; set; }
+        public decimal Precio { get; set; }
         public string Sala { get; set; }
 
         public string Idioma { get; set; }

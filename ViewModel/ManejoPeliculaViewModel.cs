@@ -101,7 +101,7 @@ namespace Boletera.ViewModel
                     return;
                 }
 
-                var result = MessageBox.Show($"¿Desea eliminar al usuario {PeliculaSellecionada.Nombre}?",
+                var result = MessageBox.Show($"¿Desea eliminar a la pelicula {PeliculaSellecionada.Nombre}?",
                     "Confirmar eliminación", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 if (result == MessageBoxResult.Yes)
