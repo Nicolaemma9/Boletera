@@ -109,37 +109,43 @@ namespace Boletera.ViewModel
         public void ExecuteLoginCommand(object obj)
         {
             var isValidUser = _userRepository.AuthenticateUser(
-                new System.Net.NetworkCredential(Username, Password));//antes Username
+                new System.Net.NetworkCredential(Username, Password));
+
             if (isValidUser)
             {
                 Thread.CurrentPrincipal = new GenericPrincipal(
-                    new GenericIdentity(Username), null); //antes Username
-                // Crear nueva ventana
-                var manejadorView = new CarteleraView();
+                    new GenericIdentity(Username), null);
 
-                //guardar el usuario logueado --prueba
-                manejadorView.DataContext = new CarteleraViewModel(Username);
+                Window nuevaVentana;
 
+                // SI ES ADMIN
+                if (Username.ToLower() == "admin")
+                {
+                    nuevaVentana = new Boletera.Views.ManejoPeliculasView();
+                }
+                // SI ES USUARIO NORMAL
+                else
+                {
+                    nuevaVentana = new CarteleraView();
+                    nuevaVentana.DataContext = new CarteleraViewModel(Username);
+                }
 
-                // Asignarla como ventana principal
-                Application.Current.MainWindow = manejadorView;
-                // Mostrarla
-                manejadorView.Show();
-                // Cerrar la anterior (login)
+                Application.Current.MainWindow = nuevaVentana;
+                nuevaVentana.Show();
+
+                // Cerrar ventana anterior (Login)
                 foreach (Window window in Application.Current.Windows)
                 {
-                    if (window != manejadorView)
+                    if (window != nuevaVentana)
                     {
                         window.Close();
                         break;
                     }
-
-
                 }
             }
             else
             {
-                ErrorMessage = "*Usuario o contraseña invalidos";
+                ErrorMessage = "*Usuario o contraseña inválidos";
             }
         }
     }
