@@ -15,15 +15,14 @@ using System.Windows.Shapes;
 namespace Boletera.Views
 {
     /// <summary>
-    /// Lógica de interacción para ManejoPeliculasView.xaml
+    /// Lógica de interacción para ManejoUsuariosView.xaml
     /// </summary>
-    public partial class ManejoPeliculasView : Window
+    public partial class ManejoUsuariosView : Window
     {
-        public ManejoPeliculasView()
+        public ManejoUsuariosView()
         {
             InitializeComponent();
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             // Crear nueva ventana
@@ -46,7 +45,7 @@ namespace Boletera.Views
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             // Crear nueva ventana
-            var Login = new Boletera.Views.ManejoUsuariosView();
+            var Login = new Boletera.Views.ManejoPeliculasView();
             // Asignarla como ventana principal
             Application.Current.MainWindow = Login;
             // Mostrarla
@@ -62,4 +61,5 @@ namespace Boletera.Views
             }
         }
     }
+
 }

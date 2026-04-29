@@ -21,13 +21,14 @@ namespace Boletera.ViewModel
         private string _errorMessage; //guarda el mensaje de erro en caso de que el login falle
         private bool _isViewVisible = true;
         private IUserRepository _userRepository;
+        private string _email;//Prueba de email
 
         //intentar hacer funcionar con emal
-        private string _email; //email
 
         
         public string Email
         {
+
             get { return _email; }
             set 
             {
@@ -89,6 +90,7 @@ namespace Boletera.ViewModel
         {
             _userRepository = new UserRepository();
             LoginCommand = new ViewModelCommand(
+
                 ExecuteLoginCommand,
                 CanExecuteLoginCommand);
         }
@@ -119,9 +121,9 @@ namespace Boletera.ViewModel
                 Window nuevaVentana;
 
                 // SI ES ADMIN
-                if (Username.ToLower() == "admin")
+                if (Username.ToLower() == "admin") 
                 {
-                    nuevaVentana = new Boletera.Views.ManejoPeliculasView();
+                    nuevaVentana = new Boletera.Views.ManejoUsuariosView();
                 }
                 // SI ES USUARIO NORMAL
                 else

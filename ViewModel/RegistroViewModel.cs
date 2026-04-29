@@ -3,6 +3,7 @@ using Boletera.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Text.RegularExpressions; //se supone que se usara para verificar la autenticidad del correo electronico
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,8 +18,19 @@ namespace Boletera.ViewModel
 
         private ObservableCollection<UserModel> _users;
         private UserModel _user;
+        private UserModel _email;
         private IUserRepository userRepository;
 
+
+
+        public UserModel Email
+        {
+            get => _email;
+            set {
+                _email = value;
+                OnProperyChanged(nameof(Email));
+            }
+        }
         public UserModel User
         {
             get => _user;
@@ -57,8 +69,35 @@ namespace Boletera.ViewModel
             }
         }
 
+        //metodo que agregue para verificar que si es un correo electronico
+        private bool EsCorreoValido(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+
+            return Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        }
+
+
         private void AddExecute(object user)
         {
+
+            if (!EsCorreoValido(User.Email))
+            {
+                MessageBox.Show("Ingresa un Email valido.",
+                                "Campo invalido", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var existeEmail = userRepository.EmailExiste(User.Email);
+            if (existeEmail)
+            {
+                MessageBox.Show("El Email que se intenta registrar ya existe en otro usuario, Por favor, usa un email nuevo para cuentas nuevas.",
+                                "Email duplicado", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+
             // Validar campos vacíos
             if (string.IsNullOrWhiteSpace(User.UserName) || string.IsNullOrWhiteSpace(User?.UserName) ||
                 string.IsNullOrWhiteSpace(User.Name) || string.IsNullOrWhiteSpace(User.LastName) ||
@@ -139,6 +178,8 @@ namespace Boletera.ViewModel
             // Verifica que el objeto user no sea nulo y tenga un Id válido
             return true;
         }
+
+
 
     }
 }

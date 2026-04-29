@@ -23,5 +23,25 @@ namespace Boletera.Views
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // Crear nueva ventana
+            var Menu = new Boletera.Views.ManejoPeliculasView();
+            // Asignarla como ventana principal
+            Application.Current.MainWindow = Menu;
+            // Mostrarla
+            Menu.Show();
+            // Cerrar la anterior (login)
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window != Menu)
+                {
+                    window.Close();
+                    break;
+                }
+            }
+
+        }
     }
 }

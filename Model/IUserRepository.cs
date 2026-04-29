@@ -21,7 +21,7 @@ namespace Boletera.Model
 
         IEnumerable<UserModel> GetAllUsers();
 
-
+        bool EmailExiste(string email);
 
     }
 }

@@ -17,5 +17,6 @@ namespace Boletera.Model
 
         IEnumerable<PeliculaModel> GetAllPeliculas();
 
+
     }
 }

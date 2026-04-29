@@ -69,6 +69,7 @@ namespace Boletera.ViewModel
 
         private void ExecuteAddUser(object obj)
         {
+
             // Crear nueva ventana
             var registroView = new Boletera.Views.RegistroView();
             // Asignarla como ventana principal
@@ -117,7 +118,7 @@ namespace Boletera.ViewModel
         }
         private bool CanExecuteUserAction(object obj)
         {
-            return SelectedUser != null;
+            return SelectedUser != null && SelectedUser.UserName.ToLower() != "admin";
         }
 
 

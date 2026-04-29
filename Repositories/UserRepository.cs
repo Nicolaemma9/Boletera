@@ -14,6 +14,7 @@ namespace Boletera.Repositories
     {
         public void Add(UserModel userModel)
         {
+
             using (var connection = GetConnection())
             using (var command = new SqlCommand())
             {
@@ -57,6 +58,7 @@ namespace Boletera.Repositories
         {
             using (var connection = GetConnection())
             using (var command = new SqlCommand())
+
             {
                 connection.Open();
                 command.Connection = connection;
@@ -151,6 +153,19 @@ namespace Boletera.Repositories
 
             return users;
         }
+        public bool EmailExiste(string email)
+        {
+            using (var connection = GetConnection())
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
 
+                command.CommandText = "SELECT 1 FROM Usuario WHERE Email = @Email";
+                command.Parameters.AddWithValue("@Email", email);
+
+                return command.ExecuteScalar() != null;
+            }
+        }
     }
 }

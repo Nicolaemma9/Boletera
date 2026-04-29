@@ -15,6 +15,20 @@ namespace Boletera.ViewModel
         private readonly IPeliculaRepository peliculaRepository;
 
         private PeliculaModel _pelicula;
+        private PeliculaModel _nombre;
+
+        public PeliculaModel Nombre
+        {
+            get => _nombre; 
+            set
+            {
+                _nombre = value;
+                OnProperyChanged(nameof(Nombre));
+            }
+        }
+
+
+
         public PeliculaModel Pelicula
         {
             get { return _pelicula; }
@@ -49,13 +63,17 @@ namespace Boletera.ViewModel
 
         private bool CanExecuteAddCommand(object obj)
         {
+
+
             if (Pelicula == null)
                 return false;
 
             if (string.IsNullOrWhiteSpace(Pelicula.Nombre))
                 return false;
 
-            if (Pelicula.Precio <= 0)
+            //if (Pelicula.Precio <= 0) //esto se vuelve inutil desde el momento en que verificamos el precion con PrecioTexto y no con Precio
+                //return false;
+            if (string.IsNullOrWhiteSpace(Pelicula.PrecioTexto))
                 return false;
 
             if (string.IsNullOrWhiteSpace(Pelicula.Sala))
@@ -75,6 +93,26 @@ namespace Boletera.ViewModel
 
         private void ExecuteAddCommand(object obj)
         {
+            if (!decimal.TryParse(Pelicula.PrecioTexto, out decimal precio))
+            {
+                MessageBox.Show("Procura que lo que ingreses, sea un numero valido (o minimamente un numero)",
+                                "Precio inválido",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning);
+                return;
+            }
+
+            if (precio <= 0)
+            {
+                MessageBox.Show("El precio debe ser mayor que 0.",
+                                "Precio inválido",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning);
+                return;
+            }
+
+            Pelicula.Precio = precio;
+
             try
             {
                 peliculaRepository.Add(Pelicula);

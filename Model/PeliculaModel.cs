@@ -19,5 +19,7 @@ namespace Boletera.Model
 
         public string Horarios { get; set; }
 
+        public string PrecioTexto { get; set; }//prueba para verificar el precio
+
     }
 }

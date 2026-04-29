@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Boletera.ViewModel
@@ -77,6 +78,14 @@ namespace Boletera.ViewModel
             Application.Current.MainWindow = registrarPeliculaView;
             // Mostrarla
             registrarPeliculaView.Show();
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window != registrarPeliculaView)
+                {
+                    window.Close();
+                    break;
+                }
+            }
         }
         private void EjecutarEditarPelicula(object obj)
         {
